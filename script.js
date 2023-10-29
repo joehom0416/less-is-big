@@ -12,8 +12,17 @@ function adjustFontSize() {
     while (isOverflowing(textarea) && fontSize > 0) {
         fontSize -= 0.1;  // Adjust this value to change the rate of font size reduction
         textarea.style.fontSize = fontSize + 'em';
+        
     }
 }
+
+// no enter key allowed
+document.getElementById('dynamic-textarea').addEventListener('keydown', function(event) {
+    if(event.key === "Enter") {
+        event.preventDefault();
+        return false;
+    }
+});
 
 // Initial adjustment on page load
 window.addEventListener('load', adjustFontSize);
